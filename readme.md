@@ -6,9 +6,35 @@ Unlike classification, regression predicts "value" of the target.
 
 You can think regression as "function".
 
+------------------------------------
+## How to use this repo
+
+- You have to install python and pip. <br/>
+  Install python : <https://www.python.org/downloads/>
+
+- Install pipenv if you don't have.
+
+      pip install pipenv
+
+- clone this repo. (or you can just copy and paste this repo.)
+
+      git init
+      git clone https://github.com/JiunJung/ML-Regression.git
+
+- After you clone this repo, you have to install dependencies.
+
+      pipenv install
+
+- And, you can run python file like below.
+      
+      pipenv run python knn-regression.py
+
+
 ---------------
 
 ## K-NN Regression
+
+    pipenv run python knn-regression.py
 
 K-NN regression predicts target using the "average of several close values".
 
@@ -29,6 +55,8 @@ And we have to find another algorithm which finds the graph(function). So that, 
 ---------------------------------------
 
 ## linear Regression 
+
+    pipenv run python linear-regression.py
 
 To solve the problem above, we need linear regression algorithm.
 
@@ -53,6 +81,44 @@ So, we have to find another algorithm.
 ------------------------
 
 ## Polynomial Regression
+
+    pipenv run python polynomial-regression.py
+
+We use quadratic function in polynomial regression. We can even use higer order functions.
+
+![polynomail result](/images/polynomial.jpg)
+
+When you see the score of this model, it is better than linear regression above. 
+
+But, this model still underfitted.
+
+And, we can solve that problem using more feature.
+
+------------------
+
+## Multiple Regression
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
