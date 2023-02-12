@@ -30,3 +30,29 @@ And we have to find another algorithm which finds the graph(function). So that, 
 
 ## linear Regression 
 
+To solve the problem above, we need linear regression algorithm.
+
+Linear regression finds the best parameter for linear function. 
+
+Here is a general linear function : y = ax + b
+
+'a' is called coefficient or weight. And 'b' is called intercept.
+
+Both of them are called "model parameter."
+
+Let's see the result of linear regression.
+
+![Result of linear regression](/images/linear-regression.jpg)
+
+It predicted 50cm tall perch's weight quite reasonably.
+
+But, there's a problem. The graph can go through the X axis and then, target value could be a negative value. But, there is no negative value for weight!
+
+So, we have to find another algorithm.
+
+------------------------
+
+## Polynomial Regression
+
+
+
