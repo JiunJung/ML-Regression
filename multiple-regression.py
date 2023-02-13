@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+import matplotlib.pyplot as plt
 
 # The more features you use, the higher model score will be.
 
@@ -56,3 +57,66 @@ ss = StandardScaler()
 ss.fit(train_poly)
 train_scaled = ss.transform(train_poly)
 test_scaled = ss.transform(test_poly)
+
+ridge = Ridge()
+ridge.fit(train_scaled, train_target)
+# print(ridge.score(train_scaled, train_target)) # 0.9896101671037343
+# print(ridge.score(test_scaled, test_target))   # 0.9790693977615379
+# the model makes good score even it's feature number is 55.
+
+# By the way, we can hadle "alpha" parameter to handle the degree of regularization. 
+# (Parameters that we can change are called hyperparameters)
+# Let's find the best alpha value.
+train_score = []
+test_score = []
+alpha_list = [0.001, 0.01, 0.1, 1, 10, 100]
+for alpha in alpha_list:
+       ridge = Ridge(alpha=alpha)
+       ridge.fit(train_scaled, train_target)
+       train_score.append(ridge.score(train_scaled,train_target))
+       test_score.append(ridge.score(test_scaled,test_target))
+
+plt.plot(np.log10(alpha_list),train_score)
+plt.plot(np.log10(alpha_list),test_score)
+plt.xlabel("alpha")
+plt.ylabel("R^2")
+plt.show()
+
+# According to the graph, 0.1 is the best alpha.
+
+ridge = Ridge(alpha=0.1)
+ridge.fit(train_scaled,train_target)
+# print(ridge.score(train_scaled,train_target)) # 0.9903815817570368
+# print(ridge.score(test_scaled,test_target))   # 0.9827976465386983
+# we've got the best test score.
+
+# Now, let's do lasso now. The process is the same.
+
+train_score = []
+test_score = []
+alpha_list = [0.001, 0.01, 0.1, 1, 10, 100]
+for alpha in alpha_list:
+       lasso = Lasso(alpha=alpha, max_iter=10000) #set max_iter to enough amount. Or error warning will be caused.
+       lasso.fit(train_scaled,train_target)
+       train_score.append(lasso.score(train_scaled, train_target))
+       test_score.append(lasso.score(test_scaled, test_target))
+
+plt.plot(np.log10(alpha_list),train_score)
+plt.plot(np.log10(alpha_list),test_score)
+plt.xlabel("alpha")
+plt.ylabel("R^2")
+plt.show()
+# According to the graph, 10 is the best alpha
+
+lasso = Lasso(alpha=10,max_iter=10000)
+lasso.fit(train_scaled,train_target)
+print(lasso.score(train_scaled,train_target)) # 0.9887624603020236
+print(lasso.score(test_scaled,test_target)) # 0.9830309645308443
+
+# Unlike Ridge, Lasso can even make coefficient to 0.
+print(np.sum(lasso.coef_ == 0)) # 48
+# lasso made 48 coefficient to 0.
+
+
+
+

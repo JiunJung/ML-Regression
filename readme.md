@@ -96,9 +96,26 @@ And, we can solve that problem using more feature.
 
 ------------------
 
-## Multiple Regression
+## Multiple Regression, Ridge, Lasso.
+
+      pipenv run python multiple-regression.py
 
 
+Using more feature, we can make regression model more complicated and accurate.
+
+But, if it is too much, we have to regularize it.
+
+And we use Ridge and Lasso to regularize regression model.
+
+For more detail, see the comments in multiple-regression.py file in this repo.
+
+![ridge](./images/ridge-best-alpha.jpg)
+[process to find the best alpha parameter in Ridge.]
+
+<br/>
+
+![Lasso](./images/lasso.jpg)
+[process to find the best alpha parameter in Lasso.]
 
 
 
