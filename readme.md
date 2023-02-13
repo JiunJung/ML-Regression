@@ -110,11 +110,13 @@ And we use Ridge and Lasso to regularize regression model.
 For more detail, see the comments in multiple-regression.py file in this repo.
 
 ![ridge](./images/ridge-best-alpha.jpg)
+
 [process to find the best alpha parameter in Ridge.]
 
 <br/>
 
 ![Lasso](./images/lasso.jpg)
+
 [process to find the best alpha parameter in Lasso.]
 
 
